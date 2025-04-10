@@ -4,9 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { 
-  AlertTriangle, 
   Loader2, 
   Send, 
   Volume2, 
@@ -85,7 +83,7 @@ export function NutritionChat() {
         variant: "default",
       });
     } catch (err) {
-      setError("Failed to get a response. Please try again later or check if the Groq API key is set correctly in the .env file.");
+      setError("Failed to get a response. Please try again later.");
       toast({
         title: "Error",
         description: "Failed to get a response. Please try again.",
@@ -125,8 +123,8 @@ export function NutritionChat() {
   };
 
   return (
-    <Card className="h-[calc(100vh-16rem)] shadow-lg border-nutribot-200 dark:border-nutribot-800">
-      <CardHeader className="bg-gradient-to-r from-nutribot-500 to-nutribot-600 text-white rounded-t-lg">
+    <Card className="shadow-lg border-nutribot-200 dark:border-nutribot-800 flex flex-col h-[calc(100vh-16rem)]">
+      <CardHeader className="bg-gradient-to-r from-nutribot-500 to-nutribot-600 text-white rounded-t-lg flex-shrink-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <MessageSquare className="h-6 w-6" />
@@ -140,14 +138,15 @@ export function NutritionChat() {
           Ask me anything about nutrition, diet plans, or healthy eating habits
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex-grow overflow-hidden pt-6">
-        <Alert variant="default" className="bg-nutribot-50 dark:bg-nutribot-900/20 border-nutribot-200 dark:border-nutribot-800 mb-4">
-          <AlertDescription className="text-sm italic text-nutribot-700 dark:text-nutribot-300">
+      
+      <CardContent className="flex-grow p-0 overflow-hidden">
+        <div className="p-4 bg-nutribot-50 dark:bg-nutribot-900/20 border-b border-nutribot-200 dark:border-nutribot-800">
+          <p className="text-sm italic text-nutribot-700 dark:text-nutribot-300">
             I provide general nutrition information. For personalized dietary advice, please consult a registered dietitian.
-          </AlertDescription>
-        </Alert>
+          </p>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 p-4">
           <Button 
             variant="outline" 
             size="sm" 
@@ -186,7 +185,7 @@ export function NutritionChat() {
           </Button>
         </div>
 
-        <ScrollArea className="h-[calc(100vh-28rem)]">
+        <ScrollArea className="h-[calc(100vh-28rem)] px-4">
           <div className="space-y-4 pb-4">
             {messages.map((msg) => (
               <div
@@ -274,16 +273,9 @@ export function NutritionChat() {
             <div ref={messagesEndRef} />
           </div>
         </ScrollArea>
-        
-        {error && (
-          <Alert variant="destructive" className="mt-4">
-            <AlertTriangle className="h-4 w-4" />
-            <AlertTitle>Error</AlertTitle>
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
       </CardContent>
-      <CardFooter className="border-t pt-4">
+      
+      <CardFooter className="border-t p-4 bg-background flex-shrink-0">
         <form onSubmit={(e) => {e.preventDefault(); handleSendMessage();}} className="w-full">
           <div className="flex w-full items-center gap-2">
             <TooltipProvider>
