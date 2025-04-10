@@ -44,7 +44,7 @@ const Index = () => {
     <ThemeProvider defaultTheme="system" storageKey="nutribot-theme">
       <Layout activeTab={activeTab} onTabChange={setActiveTab}>
         {!process.env.GROQ_API_KEY && activeTab !== "bmi" && (
-          <Alert variant="warning" className="mb-6">
+          <Alert variant="destructive" className="mb-6">
             <AlertTriangle className="h-4 w-4" />
             <AlertTitle>API Key Required</AlertTitle>
             <AlertDescription>
