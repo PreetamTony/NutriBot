@@ -1,73 +1,110 @@
-# Welcome to your Lovable project
+# NutriBot - Your AI Nutrition Companion
 
-## Project info
+NutriBot is an AI-powered nutrition assistant that helps you make better dietary choices and maintain a healthy lifestyle. Built with React, TypeScript, and powered by the Groq AI API, NutriBot offers a comprehensive suite of nutrition-related tools and features.
 
-**URL**: https://lovable.dev/projects/ef52b91f-0227-45f2-a1f5-9282d0dc8e69
+## Features
 
-## How can I edit this code?
+- **🤖 AI Chat**: Get instant answers to your nutrition-related questions
+- **📊 Nutrition Analyzer**: Analyze the nutritional content of your meals
+- **📅 Meal Planner**: Get personalized weekly meal plans based on your preferences
+- **🍳 Recipe Generator**: Generate healthy recipes using available ingredients
+- **⚖️ BMI Calculator**: Calculate and track your Body Mass Index
+- **🥗 Healthy Alternatives**: Discover nutritious alternatives to your favorite foods
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- React + TypeScript
+- Tailwind CSS for styling
+- Shadcn/ui for UI components
+- Groq AI API for intelligent responses
+- React Query for data fetching
+- Vite for build tooling
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ef52b91f-0227-45f2-a1f5-9282d0dc8e69) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Clone the repository:
+```bash
+git clone https://github.com/PreetamTony/NutriBot.git
+cd NutriBot
+```
 
-**Use your preferred IDE**
+2. Install dependencies:
+```bash
+npm install
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+3. Create a `.env` file in the root directory and add your Groq API key:
+```env
+VITE_GROQ_API_KEY=your_api_key_here
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+4. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Environment Setup
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Make sure you have the following installed:
+- Node.js (v18 or higher)
+- npm (v9 or higher)
 
-**Use GitHub Codespaces**
+## Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+src/
+├── components/        # UI components
+├── lib/              # Utility functions and API calls
+├── styles/           # Global styles
+└── App.tsx           # Main application component
+```
 
-## What technologies are used for this project?
+## Features in Detail
 
-This project is built with:
+### AI Chat
+- Real-time conversation with an AI nutritionist
+- Evidence-based nutrition advice
+- Personalized dietary recommendations
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Nutrition Analyzer
+- Detailed breakdown of meals
+- Macro and micronutrient analysis
+- Nutritional suggestions for improvement
 
-## How can I deploy this project?
+### Meal Planner
+- Customizable weekly meal plans
+- Support for various dietary preferences
+- Calorie and macro tracking
 
-Simply open [Lovable](https://lovable.dev/projects/ef52b91f-0227-45f2-a1f5-9282d0dc8e69) and click on Share -> Publish.
+### Recipe Generator
+- AI-powered recipe suggestions
+- Ingredient-based recipe search
+- Detailed cooking instructions
 
-## Can I connect a custom domain to my Lovable project?
+### BMI Calculator
+- Quick BMI assessment
+- Health category classification
+- Personalized recommendations
 
-Yes it is!
+### Healthy Alternatives
+- Smart food substitution suggestions
+- Nutritional comparison
+- Health benefit analysis
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Contributing
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Author
+
+Created by Preetam Tony J ✨
+
+## Acknowledgments
+
+- Powered by Groq AI
+- UI components by Shadcn/ui
+- Icons by Lucide

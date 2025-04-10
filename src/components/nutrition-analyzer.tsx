@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -27,7 +26,8 @@ export function NutritionAnalyzer() {
       const analysisResult = await analyzeNutrition(mealDescription);
       setResult(analysisResult);
     } catch (err) {
-      setError("Failed to analyze nutrition. Please try again later or check if the Groq API key is set correctly in the .env file.");
+      console.error("Error analyzing nutrition:", err);
+      setError("Failed to analyze nutrition. Please try again later or check if the Groq API key is set correctly in the .env file. If the issue persists, contact support.");
     } finally {
       setLoading(false);
     }

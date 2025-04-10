@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -86,10 +85,11 @@ export function NutritionChat() {
         variant: "default",
       });
     } catch (err) {
-      setError("Failed to get a response. Please try again later.");
+      console.error("Error fetching data:", err);
+      setError("Failed to get a response. Please try again later. If the issue persists, check your network connection or contact support.");
       toast({
         title: "Error",
-        description: "Failed to get a response. Please try again.",
+        description: "Failed to get a response. Please try again later.",
         variant: "destructive",
       });
     } finally {
@@ -209,7 +209,7 @@ export function NutritionChat() {
                       {msg.role === "user" ? "U" : "N"}
                     </AvatarFallback>
                     {msg.role === "assistant" && (
-                      <AvatarImage src="/placeholder.svg" className="bg-nutribot-500 p-1" />
+                      <AvatarImage src="https://sdmntpreastus2.oaiusercontent.com/files/00000000-0d7c-61f6-a76a-7adf6bff0704/raw?se=2025-04-10T18%3A40%3A40Z&sp=r&sv=2024-08-04&sr=b&scid=ce4a17e9-31a1-5c83-a799-9a5052ea48e3&skoid=ac1d63ad-0c69-4017-8785-7a50eb04382c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-09T21%3A04%3A54Z&ske=2025-04-10T21%3A04%3A54Z&sks=b&skv=2024-08-04&sig=nL5tDK%2BXFJiNHxomfZB6osFUmiw5DyXNtw0dxsR7Y6s%3D" className="bg-nutribot-500 p-1" />
                     )}
                   </Avatar>
                   <div
@@ -260,7 +260,7 @@ export function NutritionChat() {
                 <div className="flex flex-row items-start gap-3 max-w-[80%]">
                   <Avatar className="w-8 h-8 mr-2 ring-2 ring-nutribot-300/20">
                     <AvatarFallback className="bg-nutribot-500/10 text-nutribot-600">N</AvatarFallback>
-                    <AvatarImage src="/placeholder.svg" className="bg-nutribot-500 p-1" />
+                    <AvatarImage src="https://sdmntpreastus2.oaiusercontent.com/files/00000000-0d7c-61f6-a76a-7adf6bff0704/raw?se=2025-04-10T18%3A40%3A40Z&sp=r&sv=2024-08-04&sr=b&scid=ce4a17e9-31a1-5c83-a799-9a5052ea48e3&skoid=ac1d63ad-0c69-4017-8785-7a50eb04382c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-09T21%3A04%3A54Z&ske=2025-04-10T21%3A04%3A54Z&sks=b&skv=2024-08-04&sig=nL5tDK%2BXFJiNHxomfZB6osFUmiw5DyXNtw0dxsR7Y6s%3D" className="bg-nutribot-500 p-1" />
                   </Avatar>
                   <div className="p-4 rounded-2xl bg-muted border border-border/50 flex items-center">
                     <div className="flex gap-1">
