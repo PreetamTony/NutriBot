@@ -14,13 +14,15 @@ import {
   Coffee, 
   Pizza,
   Sandwich,
-  MessageSquare
+  MessageSquare,
+  Bot
 } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { chatWithNutritionAssistant } from "@/lib/groq-api";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { toast } from "@/hooks/use-toast";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 type Message = {
   id: string;
@@ -43,7 +45,8 @@ export function NutritionChat() {
   const [error, setError] = useState<string | null>(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
-
+  const scrollAreaRef = useRef<HTMLDivElement | null>(null);
+  
   useEffect(() => {
     // Scroll to bottom when messages change
     if (messagesEndRef.current) {
@@ -123,11 +126,11 @@ export function NutritionChat() {
   };
 
   return (
-    <Card className="shadow-lg border-nutribot-200 dark:border-nutribot-800 flex flex-col h-[calc(100vh-16rem)]">
-      <CardHeader className="bg-gradient-to-r from-nutribot-500 to-nutribot-600 text-white rounded-t-lg flex-shrink-0">
+    <Card className="border-nutribot-200 dark:border-nutribot-800 shadow-lg overflow-hidden">
+      <CardHeader className="bg-gradient-to-r from-nutribot-500 to-nutribot-600 text-white pb-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <MessageSquare className="h-6 w-6" />
+            <Bot className="h-6 w-6" />
             <CardTitle>Nutrition Chat Assistant</CardTitle>
           </div>
           <Badge variant="outline" className="bg-white/20 text-white hover:bg-white/30 transition-colors">
@@ -139,54 +142,54 @@ export function NutritionChat() {
         </CardDescription>
       </CardHeader>
       
-      <CardContent className="flex-grow p-0 overflow-hidden">
-        <div className="p-4 bg-nutribot-50 dark:bg-nutribot-900/20 border-b border-nutribot-200 dark:border-nutribot-800">
-          <p className="text-sm italic text-nutribot-700 dark:text-nutribot-300">
-            I provide general nutrition information. For personalized dietary advice, please consult a registered dietitian.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 p-4">
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={() => handleExampleClick("What foods are high in protein?")}
-            className="text-xs md:text-sm flex gap-2 h-auto py-3"
-          >
-            <Apple className="h-4 w-4 text-nutribot-500" />
-            <span>High protein foods?</span>
-          </Button>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={() => handleExampleClick("How many calories should I eat daily?")}
-            className="text-xs md:text-sm flex gap-2 h-auto py-3"
-          >
-            <Coffee className="h-4 w-4 text-nutribot-500" />
-            <span>Daily calories?</span>
-          </Button>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={() => handleExampleClick("Is intermittent fasting healthy?")}
-            className="text-xs md:text-sm flex gap-2 h-auto py-3"
-          >
-            <Pizza className="h-4 w-4 text-nutribot-500" />
-            <span>Intermittent fasting?</span>
-          </Button>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={() => handleExampleClick("How can I reduce sugar cravings?")}
-            className="text-xs md:text-sm flex gap-2 h-auto py-3"
-          >
-            <Sandwich className="h-4 w-4 text-nutribot-500" />
-            <span>Reduce sugar cravings?</span>
-          </Button>
-        </div>
+      <Alert variant="nutribot" className="m-4 mb-2 animate-fade-in">
+        <AlertDescription>
+          I provide general nutrition information. For personalized dietary advice, please consult a registered dietitian.
+        </AlertDescription>
+      </Alert>
+      
+      <div className="p-4 grid grid-cols-2 md:grid-cols-4 gap-2">
+        <Button 
+          variant="outline" 
+          size="sm" 
+          onClick={() => handleExampleClick("What foods are high in protein?")}
+          className="text-xs md:text-sm flex gap-2 h-auto py-3 group transition-all hover:border-nutribot-300"
+        >
+          <Apple className="h-4 w-4 text-nutribot-500 group-hover:text-nutribot-600 transition-colors" />
+          <span>High protein foods?</span>
+        </Button>
+        <Button 
+          variant="outline" 
+          size="sm" 
+          onClick={() => handleExampleClick("How many calories should I eat daily?")}
+          className="text-xs md:text-sm flex gap-2 h-auto py-3 group transition-all hover:border-nutribot-300"
+        >
+          <Coffee className="h-4 w-4 text-nutribot-500 group-hover:text-nutribot-600 transition-colors" />
+          <span>Daily calories?</span>
+        </Button>
+        <Button 
+          variant="outline" 
+          size="sm" 
+          onClick={() => handleExampleClick("Is intermittent fasting healthy?")}
+          className="text-xs md:text-sm flex gap-2 h-auto py-3 group transition-all hover:border-nutribot-300"
+        >
+          <Pizza className="h-4 w-4 text-nutribot-500 group-hover:text-nutribot-600 transition-colors" />
+          <span>Intermittent fasting?</span>
+        </Button>
+        <Button 
+          variant="outline" 
+          size="sm" 
+          onClick={() => handleExampleClick("How can I reduce sugar cravings?")}
+          className="text-xs md:text-sm flex gap-2 h-auto py-3 group transition-all hover:border-nutribot-300"
+        >
+          <Sandwich className="h-4 w-4 text-nutribot-500 group-hover:text-nutribot-600 transition-colors" />
+          <span>Reduce sugar cravings?</span>
+        </Button>
+      </div>
 
-        <ScrollArea className="h-[calc(100vh-28rem)] px-4">
-          <div className="space-y-4 pb-4">
+      <CardContent className="p-0">
+        <ScrollArea ref={scrollAreaRef} className="h-[400px] px-4" type="always">
+          <div className="space-y-4 pb-4 pr-2">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -201,8 +204,8 @@ export function NutritionChat() {
                 >
                   <Avatar className={`w-8 h-8 ${msg.role === "user" ? "ml-2" : "mr-2"} ring-2 ${
                     msg.role === "user" ? "ring-primary/20" : "ring-nutribot-300/20"
-                  }`}>
-                    <AvatarFallback className={msg.role === "user" ? "bg-primary/10" : "bg-nutribot-500/10"}>
+                  } flex-shrink-0`}>
+                    <AvatarFallback className={msg.role === "user" ? "bg-primary/10 text-primary" : "bg-nutribot-500/10 text-nutribot-600"}>
                       {msg.role === "user" ? "U" : "N"}
                     </AvatarFallback>
                     {msg.role === "assistant" && (
@@ -210,7 +213,7 @@ export function NutritionChat() {
                     )}
                   </Avatar>
                   <div
-                    className={`p-3 rounded-2xl shadow-sm ${
+                    className={`p-4 rounded-2xl shadow-sm ${
                       msg.role === "user"
                         ? "bg-primary text-primary-foreground"
                         : "bg-muted border border-border/50"
@@ -256,7 +259,7 @@ export function NutritionChat() {
               <div className="flex justify-start">
                 <div className="flex flex-row items-start gap-3 max-w-[80%]">
                   <Avatar className="w-8 h-8 mr-2 ring-2 ring-nutribot-300/20">
-                    <AvatarFallback className="bg-nutribot-500/10">N</AvatarFallback>
+                    <AvatarFallback className="bg-nutribot-500/10 text-nutribot-600">N</AvatarFallback>
                     <AvatarImage src="/placeholder.svg" className="bg-nutribot-500 p-1" />
                   </Avatar>
                   <div className="p-4 rounded-2xl bg-muted border border-border/50 flex items-center">
@@ -275,7 +278,7 @@ export function NutritionChat() {
         </ScrollArea>
       </CardContent>
       
-      <CardFooter className="border-t p-4 bg-background flex-shrink-0">
+      <CardFooter className="border-t p-4 bg-background">
         <form onSubmit={(e) => {e.preventDefault(); handleSendMessage();}} className="w-full">
           <div className="flex w-full items-center gap-2">
             <TooltipProvider>
