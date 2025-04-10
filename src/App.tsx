@@ -18,7 +18,7 @@ function App() {
             <header className="border-b">
               <div className="container mx-auto py-4 flex items-center gap-2">
                 <img 
-                  src="https://sdmntpreastus2.oaiusercontent.com/files/00000000-0d7c-61f6-a76a-7adf6bff0704/raw?se=2025-04-10T18%3A40%3A40Z&sp=r&sv=2024-08-04&sr=b&scid=ce4a17e9-31a1-5c83-a799-9a5052ea48e3&skoid=ac1d63ad-0c69-4017-8785-7a50eb04382c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-09T21%3A04%3A54Z&ske=2025-04-10T21%3A04%3A54Z&sks=b&skv=2024-08-04&sig=nL5tDK%2BXFJiNHxomfZB6osFUmiw5DyXNtw0dxsR7Y6s%3D" 
+                  src="https://i.postimg.cc/WzfKp2mL/image.png" 
                   alt="NutriBot Logo" 
                   className="h-8 w-8" 
                 />
